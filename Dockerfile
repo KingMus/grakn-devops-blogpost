@@ -26,7 +26,7 @@ ENV PATH=$PATH:$GRAKN_HOME
 WORKDIR $GRAKN_HOME
 
 COPY cassandra.yaml $GRAKN_HOME/services/cassandra
-COPY grakn-docker-entrypoint /usr/local/bin
+# COPY grakn-docker-entrypoint /usr/local/bin
 
 COPY simple-graph /usr/share/simple-graph
 
