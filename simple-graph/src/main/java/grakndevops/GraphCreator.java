@@ -1,4 +1,4 @@
-package grakn;
+package grakndevops;
 
 import ai.grakn.GraknTxType;
 import ai.grakn.Keyspace;
