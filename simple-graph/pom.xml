@@ -27,7 +27,7 @@
 					<archive>
 						<index>true</index>
 						<manifest>
-							<mainClass>simple-graph.GraphCreator</mainClass>
+							<mainClass>grakndevops.GraphCreator</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
