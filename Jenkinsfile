@@ -26,7 +26,10 @@ pipeline {
   			steps {
   				sh '''
   					cd /usr/share/simple-graph/target
-					java -cp simple-graph-0.0.1-SNAPSHOT.jar grakndevops.GraphCreator
+					echo $PWD
+					ls
+					cd ..
+					java -cp target/simple-graph-0.0.1-SNAPSHOT.jar grakndevops.GraphCreator
   				'''
           			}
   			}
