@@ -23,13 +23,11 @@ pipeline {
 					echo $PWD
 					ls
 					cd ..
-					java -cp target/simple-graph-0.0.1-SNAPSHOT.jar grakndevops.GraphCreator
+					java -cp target/simple-graph-0.0.1-SNAPSHOT-jar-with-dependencies.jar grakndevops.GraphCreator
   				'''
           			}
   			}
-		
+
 		}
-	
+
 	}
-
-
