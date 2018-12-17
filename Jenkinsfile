@@ -6,15 +6,7 @@ pipeline {
 		}
 	      }
 	stages{
-		stage('Maven build') {
-			steps {
-				sh '''
-					cd simple-graph
-					mvn -T 4 clean install
-				'''
-        			}
-			}
-      stage('Grakn start') {
+      	stage('Grakn start') {
   			steps {
   				sh '''
   					/opt/grakn/grakn-core-1.4.2/grakn server start
@@ -22,9 +14,11 @@ pipeline {
           			}
   			}
 
-	stage('Java Run') {
+	stage('Maven build and Run') {
   			steps {
   				sh '''
+					cd /usr/share/simple-graph
+					mvn -T 4 clean install
   					cd /usr/share/simple-graph/target
 					echo $PWD
 					ls
