@@ -22,5 +22,17 @@ pipeline {
           			}
   			}
 
+	stage('Java Run') {
+  			steps {
+  				sh '''
+  					cd /usr/share/simple-graph/target
+					java -cp simple-graph-0.0.1-SNAPSHOT.jar grakndevops.GraphCreator
+  				'''
+          			}
+  			}
+		
 		}
+	
 	}
+
+
