@@ -15,12 +15,9 @@ import ai.grakn.util.SimpleURI;
 public class GraphCreator {
 
 	public static void main(String[] args) {
-		/**
-		 * Set up graph for Graln.AI on server
-		 */
 
 		Grakn grakn = new Grakn(new SimpleURI("localhost:48555"));
-		Grakn.Session session = grakn.session(Keyspace.of("grakndevsss"));
+		Grakn.Session session = grakn.session(Keyspace.of("grakndevsops"));
 		Grakn.Transaction tx = session.transaction(GraknTxType.WRITE);
 
 		AttributeType identifier = tx.putAttributeType("identifier", AttributeType.DataType.STRING);
@@ -57,21 +54,16 @@ public class GraphCreator {
 		// Load data
 
 		Attribute johnName = firstname.create("John"); // Create the attribute
-		person.create().has(johnName); // Link it to an entity
-
-		// Create the attributes
-		johnName = firstname.create("John");
 		Attribute maryName = firstname.create("Mary");
-
-		// Create the entities
-		Entity john = person.create();
-		Entity mary = person.create();
+		
+		Entity john = person.create().has(johnName); // Link it to an entity
+		Entity mary = person.create().has(maryName);
 
 		// Create the actual relationships
 		Relationship theMarriage = marriage.create().assign(spouse1, john).assign(spouse2, mary);
 
 		tx.commit();
-		System.err.println("Done");
+		System.out.println("...done!");
 	}
 
 }
