@@ -17,49 +17,32 @@ public class GraphCreator {
 	public static void main(String[] args) {
 
 		Grakn grakn = new Grakn(new SimpleURI("localhost:48555"));
-		Grakn.Session session = grakn.session(Keyspace.of("grakndevsops"));
+		Grakn.Session session = grakn.session(Keyspace.of("grakndevsopssss"));
 		Grakn.Transaction tx = session.transaction(GraknTxType.WRITE);
 
-		AttributeType identifier = tx.putAttributeType("identifier", AttributeType.DataType.STRING);
+		// Define schema
+
 		AttributeType firstname = tx.putAttributeType("firstname", AttributeType.DataType.STRING);
 		AttributeType surname = tx.putAttributeType("surname", AttributeType.DataType.STRING);
-		AttributeType middlename = tx.putAttributeType("middlename", AttributeType.DataType.STRING);
-		AttributeType picture = tx.putAttributeType("picture", AttributeType.DataType.STRING);
-		AttributeType age = tx.putAttributeType("age", AttributeType.DataType.LONG);
-		AttributeType birthDate = tx.putAttributeType("birth-date", AttributeType.DataType.DATE);
-		AttributeType deathDate = tx.putAttributeType("death-date", AttributeType.DataType.DATE);
-		AttributeType gender = tx.putAttributeType("gender", AttributeType.DataType.STRING);
 
 		Role spouse1 = tx.putRole("spouse1");
 		Role spouse2 = tx.putRole("spouse2");
 		RelationshipType marriage = tx.putRelationshipType("marriage").relates(spouse1).relates(spouse2);
-		marriage.has(picture);
 
-		Role parent = tx.putRole("parent");
-		Role child = tx.putRole("child");
-		RelationshipType parentship = tx.putRelationshipType("parentship").relates(parent).relates(child);
+		EntityType person = tx.putEntityType("person").plays(spouse1).plays(spouse2);
 
-		EntityType person = tx.putEntityType("person").plays(parent).plays(child).plays(spouse1).plays(spouse2);
-
-		person.has(identifier);
 		person.has(firstname);
 		person.has(surname);
-		person.has(middlename);
-		person.has(picture);
-		person.has(age);
-		person.has(birthDate);
-		person.has(deathDate);
-		person.has(gender);
 
 		// Load data
 
 		Attribute johnName = firstname.create("John"); // Create the attribute
 		Attribute maryName = firstname.create("Mary");
-		
+
 		Entity john = person.create().has(johnName); // Link it to an entity
 		Entity mary = person.create().has(maryName);
 
-		// Create the actual relationships
+		// Create the actual relationship
 		Relationship theMarriage = marriage.create().assign(spouse1, john).assign(spouse2, mary);
 
 		tx.commit();
