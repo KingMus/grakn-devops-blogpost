@@ -1,1 +1,3 @@
-Contains code for the grakn blog post
+## Grakn.AI - blog post
+
+contains code for the grakn blog post.
