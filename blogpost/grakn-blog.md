@@ -7,7 +7,7 @@ Todo:
 
 <hr>
 
-# Introducing Grakn and DevOps
+# Introducing Grakn.AI and DevOps
 
 This blog post is about some DevOps principles and how to transfer them to Grakn.AI projects. More precisely, this means creating a Jenkins pipeline which will build a Grakn image for Docker and run our Java code inside. A regular review of the steps made is also done. The result will be an adaptable solution for most projects.
 
