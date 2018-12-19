@@ -11,7 +11,7 @@ Todo:
 
 This blog post is about some DevOps principles and how to transfer them to Grakn.AI projects. More precisely, this means creating a Jenkins pipeline which will build a Grakn image for Docker and run our Java code inside. A regular review of the steps made is also done. The result will be an adaptable solution for most projects.
 
-The complete code can be found on the GitHub-Repo of this blog post.
+The complete code can be found on the [GitHub-Repo](https://github.com/KingMus/grakn-devops-blogpost) of this blog post.
 
 ### Introduction
 
