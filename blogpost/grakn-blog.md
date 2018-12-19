@@ -1,11 +1,5 @@
 Todo:
-
 * another text review (grammar, duplications, ...)
-* draw some pics
-    * traditional pipeline
-    * maybe some architecture-pics 
-
-<hr>
 
 # Introducing Grakn.AI and DevOps
 
@@ -41,7 +35,9 @@ DevOps isn't a real method or project structure, instead, most people describe i
 
 Okay, let us get to the point of this post: Trying to combine our Grakn.AI project with some ideas from DevOps. Grakn.AI is an open source tool which can be used to represent data as a "knowledge graph". Its origin is found in the Semantic Web technology. With its own query language, Graql, you are able to structure your data in knowledge models and visualize them afterward. For more information, visit the [documentation](https://dev.grakn.ai/docs/index) or read some other posts on this blog (maybe [this](https://blog.grakn.ai/loading-data-into-a-grakn-knowledge-graph-using-the-java-client-5f2f1a7f9903) one).
 
-First of all, let us make Grakn run in a normal project setup. We install Grakn.AI on our machine or server and start it there with `/.grakn server start`. Now we can use the qraql shell to define our schema of the graph and insert some data. As an alternative, we can use the [Java API](https://dev.grakn.ai/docs/java-library/setup) of Grakn to do this. In the following, I will use the Java API.
+First of all, let us make Grakn run in a normal project setup. We install Grakn.AI on our machine or server and start it there with `/.grakn server start`. Now we can use the qraql shell to define our schema of the graph and insert some data. As an alternative, we can use the [Java API](https://dev.grakn.ai/docs/java-library/setup) of Grakn to do this. In the following, I will use the Java API. The setup we want to achieve looks like this:
+
+![arc1](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/arc1.png)
 
 My example project for this setup is the code used in the explanation of the [Core API Documentation](https://dev.grakn.ai/docs/java-library/core-api). First, connect to Grakn. If it runs on your own machine, you just define the destination inside the code like this:
 
@@ -115,6 +111,10 @@ But:
 
 * -when deploying a new code or image version, there are many manual things to do
 * -the initial installation effort is higher
+
+Our architecture is a bit more complex now:
+
+![arc2](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/arc2.png)
 
 ### Use Jenkins to automate the build process
 
@@ -215,7 +215,11 @@ The build was green? Perfect, because this means we created our pipeline success
 
 ### Conclusion
 
-Let us look again at the actual situation:
+Let us look at the actual situation again. The final project setup looks more or less like this:
+
+![arc3](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/arc3.png)
+
+We achieved the following things:
 
 * +our code is stored in a VCS and we use grakn.ai in a container
 * +when committing code, our new version will be deployed almost automatically
