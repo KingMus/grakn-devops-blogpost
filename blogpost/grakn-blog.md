@@ -1,10 +1,9 @@
 Todo:
 
-* correct text (grammar/...)
+* another text review (grammar, duplications, ...)
 * draw some pics
     * traditional pipeline
-    * maybe some architecture-pics
-* maybe shorten text at some parts and avoid duplications
+    * maybe some architecture-pics 
 
 <hr>
 
@@ -14,7 +13,7 @@ This blog post is about some DevOps principles and how to transfer them to Grakn
 
 The complete code can be found on the GitHub-Repo of this blog post.
 
-### Introdution
+### Introduction
 
 Writing working code isn't enough today. Well, maybe it was, a few years ago, where you just made your program work on your computer, give it to your it-operator afterward and say _"well, works on my machine"_. But since DevOps came up, you as a developer are able to make the situation a lot better for both sides. Even if just as a reminder, let us take a short look at the main idea behind DevOps and which advantages can be gained.
 
@@ -22,12 +21,11 @@ Writing working code isn't enough today. Well, maybe it was, a few years ago, wh
 
 For the start, let us think about the "normal" way of creating a software solution:
 
---> developer(-team) (produces code) <br>
---> test division (tests the code) <br>
---> security division (checks for the security) <br>
---> package & release (here it will become a deployed product) <br>
---> monitoring & maintenance (after-work) <br>
-(change text to pic)
+1) developer(-team) --> (produces code)
+2) test division --> (tests the code)
+3) security division --> (checks for the security)
+4) package & release --> (here it will become a deployed product)
+5) monitoring & maintenance --> (after-work)
 
 Looking at this process itself doesn't show a clear reason why you should change something. This "pipeline" is useful and makes sense. The main problem behind it is how it behaves when applied in a company: normally there are many divisions which all have one responsibility in this pipeline and needs to work together. It's is normal that in this process technical and cultural aspects hinder you from a fast and simple go-through. Instead of releasing small increments, most companies used to have a large update for the new version.
 
@@ -83,7 +81,7 @@ tx.commit();
 
 Now we can run the code. When everything works we should be able to access the graph on the dashboard. Access it with `localhost:4567`. The [Grakn Visualiser](https://dev.grakn.ai/docs/visualisation-dashboard/visualiser) documentation contains more information about how to use the dashboard properly. The following output is a possible visualization:
 
-(pic here)
+![grakn](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/grakn_result.png)
 
 ### Using a Version Control System
 
@@ -126,9 +124,9 @@ We need to install Jenkins, best where also Docker is installed. This will avoid
 
 The steps in the pipeline are defined by us when we write a so-called Jenkinsfile. The [pipeline documentation](https://jenkins.io/doc/book/pipeline/getting-started/) and the following sites explain how to do this. For us, this means we need to know about the steps in our process to "translate" our Jenkinsfile out of them. The steps could look like this:
 
-* 1) build the image
-* 2) create the container with a running Grakn instance
-* 3) compile and run our project source code
+1) build the image
+2) create the container with a running Grakn instance
+3) compile and run our project source code
 
 To build our image without having to use commands in the terminal, docker gives us the possibility to write a Dockerfile. BFergerson also used this to create the custom Grakn image. Inside the Dockerfile we define a base image if wanted and then use instructions to adapt it to our requirements.
 
@@ -213,7 +211,7 @@ Now we just need to combine these parts (the final Jenkinsfile can be found in t
 
 The build was green? Perfect, because this means we created our pipeline successfully. The output should be an image inside your docker environment which you can share or use to create a container. 
 
-pic here
+![jenkins](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/pipeline_jenkins.png)
 
 ### Conclusion
 
@@ -238,3 +236,4 @@ Send me your feedback, criticism or suggestions. I'm learning every day, too :D.
 sources:
 * https://www.docker.com/get-started
 * https://jenkins.io/doc/
+* https://grakn.ai/
