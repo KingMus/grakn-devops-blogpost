@@ -1,5 +1,7 @@
 # Introducing Grakn.AI and DevOps
 
+![titlepic](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/titlepicforpost.jpeg)
+
 This blog post is about some DevOps principles and how to transfer them to Grakn.AI projects. More precisely, this means creating a Jenkins pipeline which will build a Grakn image for Docker and run our Java code inside. This post will evaluate the steps to achieve this goal critically and objectively and has an adaptable procedure for many projects as a result.
 
 There will be some coding later, so if you want to follow while reading, you can find the complete code of this blog post in this [GitHub-Repo](https://github.com/KingMus/grakn-devops-blogpost).
@@ -78,7 +80,7 @@ So what did we achieve? Sharing our code is easy now, but we aren't able to do t
 
 ### "Dockerize" our Grakn
 
-Docker gives us the possibility to create an environment with software and dependencies we specified and wrap it up all together in one single place, having all the things it needs to work. This means code, libraries, and other stuff. This place is called an image and can be used to create a container which will run and behave the same, independent from the deployment place. For installation and further information about Docker check out the official [Docker documentation](https://docs.docker.com/get-started/). 
+Docker gives us the possibility to create an environment with software and dependencies we specified and wrap it up all together in one single place, having all the things it needs to work. This means code, libraries, and other stuff. This place is called an image and can be used to create a container which will run and behave the same, independent from the deployment place. For installation and further information about Docker check out the official [Docker documentation](https://docs.docker.com/get-started/).
 
 When installing Docker, we should think about the following things: Installing it on our local machine would work, but if we want to achieve the advantage that our container is accessible for other people we should consider installing it on an accessible machine (like a server).
 
@@ -203,7 +205,7 @@ stage('Maven build and Run') {
 
 Now we just need to combine these parts and we are able to build our defined pipeline inside the Jenkins UI. Depending on the system and the way you installed Docker and Jenkins, several errors could occur, but thanks to the large community, most of them are easy to solve.
 
-The build was green? Perfect, because this means we created our pipeline successfully. The output should be an image inside your docker environment which you can share or use to create a container. 
+The build was green? Perfect, because this means we created our pipeline successfully. The output should be an image inside your docker environment which you can share or use to create a container.
 
 ![jenkins](https://github.com/KingMus/grakn-devops-blogpost/blob/master/blogpost/blog-src/pipeline_jenkins.png)
 
